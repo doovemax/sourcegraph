@@ -55,7 +55,7 @@ export class SiteAdminAddExternalServicePage extends React.Component<Props, Stat
             kind = kind.toUpperCase()
         }
         const isKnownKind = (kind: string): kind is GQL.ExternalServiceKind =>
-            !!ALL_EXTERNAL_SERVICES[kind as GQL.ExternalServiceKind]
+            ALL_EXTERNAL_SERVICES.hasOwnProperty(kind)
         return kind && isKnownKind(kind) ? kind : GQL.ExternalServiceKind.GITHUB // default to GitHub
     }
 

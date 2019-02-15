@@ -281,13 +281,14 @@ function setDiagnosticsOptions(m: typeof monaco, props: Props): void {
             // Include these schemas because they are referenced by other schemas.
             {
                 uri: 'http://json-schema.org/draft-07/schema',
-                schema: jsonSchemaMetaSchema as JSONSchema,
+                schema: jsonSchemaMetaSchema,
             },
             {
                 uri: 'settings.schema.json#',
                 schema: settingsSchema,
             },
-        ].concat(props.extraSchema ? [{ uri: props.extraSchema.$id, schema: props.extraSchema }] : []),
+            ...(props.extraSchema ? [{ uri: props.extraSchema.$id, schema: props.extraSchema }] : []),
+        ],
     })
 }
 
